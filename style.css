@@ -130,6 +130,12 @@ iframe {
     margin-top: 20px;
 }
 
+.card {
+    width: 300px; /* Ajusta el ancho según sea necesario */
+    margin-right: 20px; /* Agrega un espacio a la derecha de la tarjeta */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega sombra a la tarjeta */
+  }
+  
 /* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
     .container > div {

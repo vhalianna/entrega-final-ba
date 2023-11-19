@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const storedCertificados = localStorage.getItem("certificados");
   if (storedCertificados) {
     certificados = JSON.parse(storedCertificados);
+    informe(); // Llamar directamente a la función informe al cargar la página
     mostrarCertificados();
   }
 });
@@ -103,16 +104,18 @@ function contarCertificadosPorTipo() {
 }
 
 // Función para contar la cantidad de certificados cargados
+
 function informe() {
   const conteo = contarCertificadosPorTipo();
-  let conteoHTML = "<h3>Certificados por Tipo:</h3><ul>";
-  
+  let conteoHTML = "<div class='card'><div class='card-body'><h3 class='card-title'>Certificados por Tipo:</h3><ul>";
+
   for (const tipo in conteo) {
-    conteoHTML += `<li>${tipo}: ${conteo[tipo]}</li>`;
+    const tipoFormateado = formatearCadena(tipo);
+    conteoHTML += `<li>${tipoFormateado}: ${conteo[tipo]}</li>`;
   }
-  conteoHTML += "</ul>";
+  conteoHTML += `</ul></div></div>`;
   const cantidadCertificados = certificados.length;
-  // Agrega el conteo por tipo y la cantidad total al contenedor
+  // Actualiza directamente el contenido del contenedor
   cantidadCertificadosContainer.innerHTML = conteoHTML + `<p>Cantidad de certificados cargados: ${cantidadCertificados}</p>`;
 }
 
@@ -145,10 +148,11 @@ function mostrarCertificados() {
     const newRow = document.createElement("tr");
         newRow.innerHTML = `
             <th scope="row">${index + 1}</th>
+            <td>${certificado.tipo}</td>
             <td>${certificado.persona.apellido}</td>
             <td>${certificado.persona.nombre}</td>
             <td>${certificado.persona.dni}</td>
-            <td>${certificado.tipo}</td>
+            
         `;
         tbody.appendChild(newRow);
     });
