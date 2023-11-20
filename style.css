@@ -61,18 +61,6 @@ select {
     gap: 10px;
 }
 
-#certificadosContainer {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-align: center; /* Alinear el contenido al centro */
-    list-style-type: none; /* Quitar los puntos de la lista */
-    padding-left: 0; /* Quitar el padding izquierdo de la lista */
-    max-height: 200px; /* Establece una altura máxima para el contenedor */
-    overflow-y: scroll; /* Agrega una barra de desplazamiento vertical si el contenido excede la altura máxima */
-}
 
 footer {
     text-align: center;
@@ -109,9 +97,6 @@ footer a:hover {
     text-align: left;
 }
 
-body {
-    /* ... (resto del código) ... */
-}
 
 .container {
     display: flex;
@@ -130,22 +115,62 @@ iframe {
     margin-top: 20px;
 }
 
+#contenidoCertificados {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#certificadosContainer {
+    display: flex;
+    margin-top: 20px;
+}
+
 .card {
-    width: 300px; /* Ajusta el ancho según sea necesario */
-    margin-right: 20px; /* Agrega un espacio a la derecha de la tarjeta */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega sombra a la tarjeta */
-  }
-  
+    width: 300px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+    flex-grow: 1;
+    overflow: auto; /* Añade el scroll a la tabla */
+}
+
+.table {
+    width: 100%;
+}
+
+/* Asegúrate de que la tabla tenga un ancho flexible */
+.table {
+    max-width: 70%; /* Ajusta el ancho según tus necesidades */
+}
+
 /* Media query para pantallas más pequeñas */
 @media (max-width: 768px) {
-    .container > div {
-        width: 100%;
+    #certificadosContainer {
+        flex-direction: column; /* Cambia la dirección del contenedor a columna en pantallas más pequeñas */
+        align-items: center; /* Alinear al centro del eje vertical (verticalmente) */
+    }
+    
+    .card {
+        
     }
 }
 
 
-@media (max-width: 480px) {
-    body {
-        font-size: 14px;
+@media (max-width: 768px) {
+    #contenidoCertificados {
+        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+        align-items: center; /* Alinea al centro del eje vertical (verticalmente) */
+    }
+
+    #certificadosContainer {
+        margin-top: 20px; /* Ajusta el margen superior en pantallas más pequeñas */
+    }
+
+    .card {
+        margin-right: 0; /* Elimina el margen derecho en pantallas más pequeñas */
+        margin-bottom: 20px; /* Agrega margen inferior para separar la tarjeta de la tabla */
     }
 }
